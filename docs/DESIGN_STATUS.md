@@ -51,8 +51,52 @@ This is the live register of what is confirmed, hypothesized, merely possible, o
 - A sufficiently predictable competitive world creates deeper planning and counter-planning.
 - A very small set of strategic levers can expose whether the intended experience is fun before MMO-scale systems are built.
 - Long-term depth can come from interacting understandable systems rather than excessive feature count or randomness.
+- A mature world of existing factions and institutions can give newcomers meaningful context without requiring them to found and grow an isolated settlement.
+- Persistent player-authored doctrine can remain effective while a player is absent yet become counterable as opponents observe, learn, and adapt.
+- Different hierarchy levels can offer distinct but equally meaningful struggles instead of making lower ranks a tutorial and higher ranks a solved end state.
+- Reversible rank, increased exposure for prominent leaders, and recovery after defeat can create turnover without erasing long-term identity and achievement.
+- Information-intensive precision and scale-oriented brute force can both remain viable in different situations.
 
 These are not proven. The PoC and design work must define how to test them.
+
+## Emerging owner direction — exploratory, not confirmed scope
+
+The detailed discussion is preserved in [MMO Challenges and Emerging Direction](MMO_DESIGN_CHALLENGES_AND_EMERGING_DIRECTION.md). The following items are candidates with a strong owner preference, not approved mechanics or PoC scope:
+
+### World and scarcity
+
+- Players enter a mature world of established states, factions, territory, institutions, and economic relationships instead of founding a new polity from nothing.
+- NPCs initially operate unfilled offices and institutions, particularly before enough players exist to occupy them.
+- Important scarcity comes from limited extraction sites, extraction methods, access rights, and ownership rather than only from finite quantities of material.
+
+### Roles, authority, and governance
+
+- A new player begins with a bounded subordinate responsibility inside an existing faction and may rise or fall through several layers of authority.
+- Increasing rank expands the player's authority to plan, order, allocate, or govern; exact roles such as commander, politician, corporate executive, president, or emperor are illustrations only.
+- Factions may distribute authority differently, ranging from concentrated leadership to power shared among several players and NPCs.
+- A faction's form of governance may change during play, although the mechanism and protections are open.
+
+### Delegated strategy and counterplay
+
+- Players may express persistent military, political, economic, or governance doctrine through conditional rules rather than directing every atomic action.
+- A usable inherited default doctrine may support new players who have not authored rules.
+- Subordinate commanders or officials may differ in competence, interpretation, and improvisation, making delegation choices meaningful.
+- No doctrine should be universally optimal; opponents should be able to learn from encounters and develop counters.
+- Non-transitive and contextual strengths may help create counterplay, but the design must avoid collapsing into a rigid lookup table.
+- Conflict and governance resolution should be computationally bounded rather than dependent on detailed simulation of every individual actor.
+
+### Power, recovery, and recognition
+
+- Rank and authority are reversible: a top leader may fall to middle or lower office and later recover through effective decisions.
+- Prominence increases visibility and gives rivals more reason to challenge the player, while low-ranked players are generally less valuable targets.
+- Effective tenure and contribution to world development may support long-term recognition; “points” is only a placeholder, not a selected scoring system.
+
+### Information and accessibility
+
+- Intelligence may be powerful but should not make information investment the only viable strategic style.
+- Scale, volume, and brute force should remain viable in some contexts even against more precise approaches.
+- Onboarding should remain approachable while long-term play continues to reveal deeper interactions, shortcuts, and counters.
+- If hierarchy is retained, every layer should be enjoyable and retain meaningful vulnerability; advancement should change the struggle rather than eliminate it.
 
 ## Unclassified candidate systems
 
@@ -83,6 +127,19 @@ The design process must place each candidate into one of three groups: **PoC cor
 - Is the world fictional, procedurally generated, or recognizably based on real geography?
 - What does ownership or influence mean at each geographical level?
 - How does a persistent world handle finite territory, new players, defeated players, inactive players, and server age?
+- Which parts of the mature world are fixed history, and which can players meaningfully transform?
+- How do scarce extraction sites and rights remain accessible to newcomers and recovering players?
+
+### Hierarchy, roles, and governance
+
+- Is the player fundamentally a persistent person, an officeholder, a household, an organization, or a career spanning several offices?
+- What authority, assets, knowledge, and relationships belong to the player, office, faction, or territory?
+- How are appointment, promotion, demotion, dismissal, succession, and vacant offices decided?
+- How do NPC-held offices yield to players without NPCs being either useless or unfairly superior?
+- Can superiors override subordinate doctrine, and can subordinates resist harmful orders?
+- How can governance change without arbitrary disenfranchisement or faction capture?
+- What prevents high office from requiring more real-world availability than lower office?
+- How does each hierarchy layer provide a complete game rather than a waiting room for promotion?
 
 ### Fundamental loop and objectives
 
@@ -101,6 +158,10 @@ The design process must place each candidate into one of three groups: **PoC cor
 - What information can plans use without granting perfect intelligence?
 - How can opponents anticipate or disrupt plans while outcomes remain understandable?
 - What happens when assumptions change, prerequisites disappear, or a plan partially fails?
+- What makes a stale doctrine counterable without rewarding hourly rule edits?
+- What commitment, delay, or cost applies when doctrine changes?
+- How are subordinate competence and improvisation previewed and explained after an outcome?
+- Where is the abstraction boundary between strategic doctrine and tactical micromanagement?
 
 ### Competition and information
 
@@ -108,6 +169,16 @@ The design process must place each candidate into one of three groups: **PoC cor
 - What uncertainty creates useful deduction rather than arbitrary surprise?
 - How are offline players protected without removing meaningful aggression?
 - What catch-up, recovery, or anti-snowball mechanisms preserve long-term competition?
+- When should brute force overcome a refined counter, and what price should it pay?
+- How is leadership pressure bounded so prominence remains desirable rather than becoming automatic dogpiling?
+
+### Progression, recovery, and recognition
+
+- What persists through promotion, demotion, defeat, faction change, or long absence?
+- What does a defeated player need in order to become relevant again?
+- What counts as developing the world or contributing to a faction?
+- How can recognition avoid rewarding incumbency, low-value activity, or collusive metric farming?
+- What replaces survival pressure at higher ranks without turning progression into constant crisis management?
 
 ### PoC validation
 
@@ -116,6 +187,8 @@ The design process must place each candidate into one of three groups: **PoC cor
 - How long must a session or test world run to reveal the intended decisions?
 - What observable evidence will distinguish strategic fun from novelty or simple optimization?
 - Which results would invalidate or materially change the central design hypothesis?
+- What is the smallest test of hierarchical delegated play that does not require simulating the entire MMO?
+- What meaningful decision does a new subordinate make during each expected check-in?
 
 ### Systems and interactions
 
@@ -139,6 +212,17 @@ These are risks to investigate, not conclusions or accepted solutions.
 | Geography creates premature scope | A realistic hierarchy can multiply content, balance, data, and political-sensitivity costs. | What is the smallest abstract world that validates the loop? |
 | Too many coupled systems | Broad simulation may hide whether the core loop itself is enjoyable. | Which few levers create the highest-value strategic interactions? |
 | PoC tests the wrong thing | A technically impressive prototype may not answer whether planning is fun. | What explicit hypotheses and failure criteria govern the PoC? |
+| Low-rank play becomes a waiting room | Scarce high offices mean most players may spend substantial time below the top. | What makes each authority layer a satisfying game in its own right? |
+| High office requires constant availability | Leadership naturally produces more interruptions, negotiations, and emergencies. | How can authority increase without making frequent presence the real promotion requirement? |
+| Finite offices become socially captured | Alliances, favoritism, alternate accounts, or activity may control appointment and promotion. | Which promotion and succession mechanisms preserve legitimate access to authority? |
+| NPC governance undermines agency | Strong NPCs may be irrational to replace, while weak NPCs create arbitrary inherited failures. | What is the NPC's purpose, competence, and handoff rule? |
+| Rule authoring becomes a scripting contest | Highly expressive doctrine may favor programmers and copied meta-rules over strategic judgment. | Which bounded rule vocabulary remains deep, readable, and accessible? |
+| Commander behavior obscures causality | Hidden competence or improvisation can make a sound plan fail opaquely. | How are delegate behavior and responsibility made forecastable and explainable? |
+| Counter systems become lookup tables | Hard counters can replace planning with scouting followed by an automatic response. | Which costs, commitments, mixed forces, and contextual factors keep counters non-trivial? |
+| Anti-leader incentives become dogpiling | Universal rewards for attacking the visible leader can make promotion feel punitive. | How is pressure strong enough to prevent permanence but bounded enough to preserve leadership agency? |
+| Contribution scoring rewards incumbency or farming | Tenure and world-development metrics can favor existing leaders or be manipulated. | What evidence of value cannot be cheaply manufactured or collusively repeated? |
+| Mutable governance disenfranchises players | Institutional change may remove authority or invalidate a player's chosen role. | What consent, transition, opposition, and recovery mechanisms protect agency? |
+| Constant struggle becomes constant stress | Uninterrupted vulnerability may turn long-term tension into exhaustion. | How can the nature of problems evolve while allowing periods of stability and achievement? |
 
 ## Decision log
 

@@ -57,6 +57,7 @@ Avoid God classes, service spaghetti, hidden business rules, infrastructure leak
 
 - [Project brief](docs/PROJECT_BRIEF.md) — canonical synthesis of the product vision, design principles, architectural values, and current mandate.
 - [Design status](docs/DESIGN_STATUS.md) — confirmed constraints, uncommitted candidates, open decisions, and risks to investigate.
+- [MMO challenges and emerging direction](docs/MMO_DESIGN_CHALLENGES_AND_EMERGING_DIRECTION.md) — exploration record covering the MMO risk map, the owner's hierarchical-world concept, delegated doctrine, and unresolved tensions.
 - [Development workflow](docs/DEVELOPMENT_WORKFLOW.md) — the gated GitHub workflow that applies once implementation begins.
 - [Initial bootstrap prompt](docs/archive/INITIAL_BOOTSTRAP_PROMPT.md) — verbatim historical source, retained so no original context is lost.
 - [Agent instructions](AGENTS.md) — repository-specific continuity rules for coding agents and future sessions.
