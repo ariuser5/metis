@@ -27,9 +27,13 @@ This is the live register of what is confirmed, hypothesized, merely possible, o
 ### Process
 
 - The current phase is game-design and architecture discovery.
-- No implementation, technology-stack selection, or GitHub issue creation is currently authorized.
+- No implementation, technology-stack selection, or GitHub Project/GitHub issue creation is currently authorized.
 - Design ideas should be challenged on gameplay, balance, complexity, scalability, and technical-debt grounds.
-- Once development begins, work follows the issue and pull-request workflow in `DEVELOPMENT_WORKFLOW.md`.
+- The project owner must explicitly authorize the transition out of the discussion and design phase before the implementation workflow begins.
+- After that transition, every implementation or material project modification must be tracked in GitHub Project and represented by a GitHub issue.
+- Changes must be made on an issue-associated branch and delivered through a pull request; direct commits to the protected default branch are not permitted.
+- Every pull request requires review and approval by a human with the necessary project permissions before merge.
+- Issues and GitHub Project items are closed or marked complete only after the approved pull request has been merged.
 
 ### Engineering values for future implementation
 
@@ -136,7 +140,17 @@ These are risks to investigate, not conclusions or accepted solutions.
 
 ## Decision log
 
-No post-bootstrap game-design decisions have been recorded yet.
+### 2026-08-24 — Formal project-management workflow after the design gate
+
+Status: Confirmed
+
+Decision: The GitHub Project and its corresponding GitHub issues will govern all implementation-phase work. Every implementation or material repository modification must be justified by a tracked item, implemented on an associated branch, and delivered through a pull request. The protected default branch may only receive changes through an approved pull request. Each pull request requires review and approval by a human with the necessary project permissions. The issue and project item are completed only after the approved pull request is merged.
+
+Rationale: This creates an auditable, reviewable workflow suitable for production software development and keeps project scope, implementation, review, and completion connected. It also ensures that automated agents cannot independently place changes into the protected default branch.
+
+Alternatives considered: Direct commits to the default branch; pull requests without mandatory human approval; using GitHub issues without a GitHub Project. These alternatives provide weaker traceability, review control, or project-level progress tracking.
+
+Consequences and follow-ups: The workflow is dormant during the current discussion and design phase. Before implementation starts, the GitHub Project workflow states, issue templates, branch naming convention, pull-request template, and repository branch protection/rulesets must be configured. The current default branch is `main`; if it is renamed to `master`, the same protections apply.
 
 Add future entries in this form:
 

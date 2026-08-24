@@ -2,7 +2,7 @@
 
 Metis is a persistent, server-authoritative MMO strategy game in which planning, forecasting, logistics, diplomacy, and long-term optimization should matter more than login frequency or constant clicking.
 
-> **Current phase: game-design and architecture discovery.** The repository contains documentation only. Do not implement game code, choose a technology stack, or create GitHub issues yet.
+> **Current phase: game-design and architecture discovery.** The repository contains documentation only. Do not implement game code, choose a technology stack, or create GitHub Project items or GitHub issues yet.
 
 ## Vision
 
@@ -65,4 +65,4 @@ When documents appear to conflict, use the original prompt to recover intent, th
 
 ## Contribution gate
 
-Do not start implementation based on this README. The next project activity is collaborative game-design refinement. After sufficient agreement, work will move to GitHub issues and the issue → branch → pull request → review → approved merge workflow described in [the development workflow](docs/DEVELOPMENT_WORKFLOW.md).
+Do not start implementation based on this README. The next project activity is collaborative game-design refinement. Only after the project owner explicitly authorizes the transition to implementation will the project use the GitHub Project workflow: every material change must have a tracked project item and issue, implementation must happen on an issue-associated branch, and delivery must happen through a pull request with mandatory human review before merge into the protected default branch. The issue and project item are completed after the approved merge. See [the development workflow](docs/DEVELOPMENT_WORKFLOW.md) for the complete policy.

@@ -19,7 +19,7 @@ The project is in game-design and architecture discovery.
 
 - Do not write game or infrastructure code.
 - Do not select or propose a technology stack unless the project owner explicitly reopens that topic.
-- Do not create GitHub issues yet.
+- Do not create GitHub Project items or GitHub issues yet.
 - Do not treat a listed candidate system as approved scope.
 - Do not silently resolve an open design question.
 
@@ -57,14 +57,18 @@ When recording a decision, include its rationale, meaningful rejected alternativ
 
 ## Future implementation rules
 
-Implementation remains locked until the project owner explicitly authorizes it after design agreement. Once unlocked:
+Implementation and project-management workflow remain locked until the project owner explicitly authorizes the transition after design agreement. The rules below apply only after that transition. Once unlocked:
 
-1. Ensure the work has a refined GitHub issue.
-2. Move the issue to **In Progress**.
-3. Implement on a branch associated with that issue.
-4. Push the branch and open a pull request.
-5. Wait for review and address feedback.
-6. Merge only after approval.
+1. Every implementation or project modification must be justified by a tracked item in the GitHub Project and a corresponding GitHub issue.
+2. Refine the issue, including scope, non-goals, acceptance criteria, risks, and validation expectations.
+3. Move the issue to **In Progress** before starting the work.
+4. Implement on a branch associated with that issue; never commit directly to the protected default branch.
+5. Push the branch and open a pull request that links the issue.
+6. Wait for review by a human who has the necessary project permissions, address feedback, and obtain approval.
+7. Merge only after the required human approval and repository checks have passed.
+8. Close the issue and update the GitHub Project after the approved merge.
+
+Automated-agent output or an automated check does not replace the required human review. Agents must not self-approve, merge their own pull requests, or bypass repository protections.
 
 Favor Clean Architecture, appropriate DDD, SOLID, useful vertical slices, a rich domain model, strong separation of concerns, and explicit business rules. Keep infrastructure out of domain logic. Avoid God classes, service spaghetti, hidden rules, magic behavior, and premature optimization.
 
