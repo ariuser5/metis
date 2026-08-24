@@ -6,6 +6,48 @@ Implementation has not started. The project is currently in the discussion and d
 
 Current design and documentation work exists to reach that gate. Candidate features are not an implementation backlog.
 
+## Codex agent team
+
+The repository contains project-scoped Codex agents under `.codex/agents/`.
+They provide role separation for the future implementation workflow; their
+presence does not authorize implementation during the current design phase.
+
+The main Codex task acts as the orchestrator. The roles are:
+
+- `design_advisor` — read-only game-design feedback on fun, scope, tradeoffs, and PoC value;
+- `architect` — read-only requirements, architecture, risk, and acceptance-criteria analysis;
+- `implementor` — implementation of one approved issue on its associated branch;
+- `reviewer` — independent, read-only review of the branch against the issue and default branch;
+- `qa` — read-only tests and validation against the issue acceptance criteria.
+
+During the current design phase, the normal design handoff is:
+
+```text
+Idea or design question → design_advisor → human owner decision → DESIGN_STATUS.md
+```
+
+After the design gate is opened, the normal implementation handoff is:
+
+```text
+GitHub issue → architect → human plan approval → implementor → reviewer + QA → human PR review → merge
+```
+
+Only the implementor may modify source files during implementation. Reviewer
+and QA report findings and do not repair the branch they review. They may run
+in parallel after implementation because their default work is read-heavy and
+independent. The orchestrator must not treat an agent review as the required
+human approval, and no agent may approve, merge, or close the work.
+
+Use explicit delegation prompts that identify the issue, branch, acceptance
+criteria, required handoff, and whether the orchestrator should wait for all
+roles before continuing. Avoid running multiple write-capable agents against
+the same branch.
+
+The design advisor is not the product owner and does not make final product
+decisions. Its output should identify which statements are Confirmed,
+Hypothesis, Candidate, Open, Recommended, or Rejected, and it must leave
+consequential choices for the human owner to decide explicitly.
+
 ## Required project workflow after the design gate
 
 After the project owner opens the implementation phase, the GitHub Project becomes the work-tracking source of truth. Every implementation and every material project modification must be justified by a GitHub Project item and represented by a corresponding GitHub issue. This applies to code, documentation, configuration, tests, assets, and other repository changes.

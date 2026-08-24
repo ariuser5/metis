@@ -70,6 +70,30 @@ Implementation and project-management workflow remain locked until the project o
 
 Automated-agent output or an automated check does not replace the required human review. Agents must not self-approve, merge their own pull requests, or bypass repository protections.
 
+## Agent delegation protocol
+
+The project-scoped Codex agents in `.codex/agents/` define specialized roles:
+
+- `design_advisor` challenges game ideas and evaluates fun, scope, tradeoffs, and PoC value;
+- `architect` performs read-only design and architecture analysis;
+- `implementor` makes the approved change on its issue branch;
+- `reviewer` performs an independent, read-only pull-request review;
+- `qa` performs read-only validation and regression checks.
+
+The main Codex task is the orchestrator. It must pass bounded context and
+explicit acceptance criteria to each role, wait for required results, and
+summarize the handoffs. Only the implementor may modify source files during
+the implementation step. Reviewer and QA must not fix the change they are
+reviewing. Their findings return to the implementor through the orchestrator.
+
+These agent definitions support the future workflow; they do not open the
+current design gate or authorize game implementation. Human review remains
+mandatory before any pull request can be merged.
+
+During the current design phase, `design_advisor` is the primary delegated
+role. It may challenge and structure ideas, but the human project owner makes
+the product decisions and decides when a design question is resolved.
+
 Favor Clean Architecture, appropriate DDD, SOLID, useful vertical slices, a rich domain model, strong separation of concerns, and explicit business rules. Keep infrastructure out of domain logic. Avoid God classes, service spaghetti, hidden rules, magic behavior, and premature optimization.
 
 Preserve unrelated user changes, validate every change proportionately, and report checks that were not run.

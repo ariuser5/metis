@@ -34,6 +34,8 @@ This is the live register of what is confirmed, hypothesized, merely possible, o
 - Changes must be made on an issue-associated branch and delivered through a pull request; direct commits to the protected default branch are not permitted.
 - Every pull request requires review and approval by a human with the necessary project permissions before merge.
 - Issues and GitHub Project items are closed or marked complete only after the approved pull request has been merged.
+- The project uses a read-only project-scoped `design_advisor` during the current design phase; it challenges ideas but does not make product decisions.
+- The future implementation workflow uses project-scoped Codex agents with separate architect, implementor, reviewer, and QA responsibilities; this does not replace mandatory human PR review.
 
 ### Engineering values for future implementation
 
@@ -151,6 +153,30 @@ Rationale: This creates an auditable, reviewable workflow suitable for productio
 Alternatives considered: Direct commits to the default branch; pull requests without mandatory human approval; using GitHub issues without a GitHub Project. These alternatives provide weaker traceability, review control, or project-level progress tracking.
 
 Consequences and follow-ups: The workflow is dormant during the current discussion and design phase. Before implementation starts, the GitHub Project workflow states, issue templates, branch naming convention, pull-request template, and repository branch protection/rulesets must be configured. The current default branch is `main`; if it is renamed to `master`, the same protections apply.
+
+### 2026-08-24 — Project-scoped Codex agent team
+
+Status: Confirmed
+
+Decision: The future implementation workflow will use four narrow project-scoped Codex agents: `architect`, `implementor`, `reviewer`, and `qa`. The main Codex task orchestrates their handoffs. Architect, reviewer, and QA are read-only by default; only the implementor may modify source files. Agent output supplements but never replaces the required human PR review.
+
+Rationale: Separate contexts and permissions make responsibilities clearer, reduce context pollution, and create an independent review and validation stage without allowing multiple agents to edit the same branch.
+
+Alternatives considered: One general-purpose agent performing every stage; multiple write-capable agents editing the same branch; treating an automated reviewer as sufficient approval. These alternatives weaken separation of concerns, increase merge conflicts, or violate the human-review requirement.
+
+Consequences and follow-ups: The definitions live in `.codex/agents/` and the concurrency limit in `.codex/config.toml`. Before implementation starts, the team should validate the prompts on a real issue and decide whether QA commands require a controlled writable sandbox for temporary test artifacts.
+
+### 2026-08-24 — Design-advisor role during design discovery
+
+Status: Confirmed
+
+Decision: Metis will use a read-only project-scoped `design_advisor` as a discussion partner during the current game-design phase. It will challenge ideas, identify meaningful player decisions, surface risks and alternatives, distinguish core gameplay from deferred features or polish, and recommend PoC tests. It must not modify project files, create tickets, or silently resolve product decisions. The human project owner remains the decision-maker.
+
+Rationale: The project is still determining its core gameplay, PoC scope, and the boundary between essential systems and attractive extras. A dedicated design role keeps those discussions focused and prevents the implementation-oriented Architect or general-purpose agent from prematurely treating ideas as requirements.
+
+Alternatives considered: No dedicated design role; using the Architect for all design discussions; allowing a general-purpose agent to make implicit product decisions. These alternatives provide weaker separation between product exploration, technical architecture, and final ownership.
+
+Consequences and follow-ups: The role is available now but does not open the implementation gate. Confirmed decisions must still be recorded by the human-approved documentation workflow in `DESIGN_STATUS.md`.
 
 Add future entries in this form:
 
