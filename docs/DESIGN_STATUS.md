@@ -22,7 +22,19 @@ This is the live register of what is confirmed, hypothesized, merely possible, o
 - Randomness must not dominate strategic decisions.
 - Player-authored conditional or ordered planning is a core mechanic to explore.
 - Automation must not remove meaningful decision-making or become abusive autopilot.
+- Within a contest, players may submit manual overrides at any time, but preconfigured automatic contingencies must execute materially faster. The exact timing difference is a pre-release balance decision.
+- Automatic contingencies may react only to information realistically available to their faction; they may not read the simulation's hidden state. Any exception requires an explicit future design decision.
+- For the PoC, a faction sees its own force's strength, energy, and morale exactly, while enemy condition is an intelligence-based estimate. The release version should not necessarily provide exact own-force information.
+- For the PoC, intelligence may show broad enemy force size and estimated current posture. The release version should not reliably expose enemy posture.
+- When an attack begins, the defender's standing strategy responds immediately. The defender receives a notification but no guaranteed pause for manual input; defence quality is the owner's responsibility.
 - The first playable scope must be a small PoC focused on testing whether the fundamental loop is fun.
+
+### Initial PoC decision boundary
+
+- The first PoC will test a military contest in which the player decides where to visibly commit forces, how much strength to show versus retain elsewhere, and one simple conditional tactic for the committed force.
+- The PoC should use this boundary to test bluffing, force allocation, and a limited reaction to a changing contest without requiring a full editable doctrine system.
+- Each contested district is self-contained in the PoC; standing defence cannot automatically call reinforcements from other districts.
+- A full tactics editor, faction cultural defaults, detailed initiative-shift rules, commander competence, and propaganda or public-legitimacy systems remain outside this confirmed PoC boundary and are **Open** or **Candidate** work.
 
 ### Process
 
@@ -81,6 +93,7 @@ The detailed discussion is preserved in [MMO Challenges and Emerging Direction](
 - Players may express persistent military, political, economic, or governance doctrine through conditional rules rather than directing every atomic action.
 - A usable inherited default doctrine may support new players who have not authored rules.
 - Subordinate commanders or officials may differ in competence, interpretation, and improvisation, making delegation choices meaningful.
+- Automated reinforcement calls may later be customizable: a player could enable or disable them for specified scenarios. This is a **Candidate** beyond the PoC.
 - No doctrine should be universally optimal; opponents should be able to learn from encounters and develop counters.
 - Non-transitive and contextual strengths may help create counterplay, but the design must avoid collapsing into a rigid lookup table.
 - Conflict and governance resolution should be computationally bounded rather than dependent on detailed simulation of every individual actor.
@@ -97,10 +110,18 @@ The detailed discussion is preserved in [MMO Challenges and Emerging Direction](
 - Scale, volume, and brute force should remain viable in some contexts even against more precise approaches.
 - Onboarding should remain approachable while long-term play continues to reveal deeper interactions, shortcuts, and counters.
 - If hierarchy is retained, every layer should be enjoyable and retain meaningful vulnerability; advancement should change the struggle rather than eliminate it.
+- In the release version, any uncertainty about own forces must come from legible, actionable reporting limits rather than arbitrary hidden truth. Players must see what is confirmed, estimated, or stale; why confidence is limited; and which choices can improve it.
+- In the release version, hidden enemy posture must still leave observable, intelligence-gated signals that support deduction and revision of hypotheses. It must not cause a decisive outcome that a faction could not plausibly anticipate.
+
+### Live operations and emergency intervention
+
+- The owner or an authorized moderation committee may eventually need a runtime capability to address exploits, broken economies, stalled worlds, or exceptional events by changing world state, including resources, NPCs, disasters, or markets.
+- This is a **Candidate** deferred beyond the PoC, not a license for routine invisible tuning. It must not undermine the confirmed requirements for predictable, forecastable, and fairly earned outcomes.
+- Candidate safeguards include prospective application where possible, narrow and time-limited scope, public logging, no player- or faction-targeted advantage, and explicit handling of any declared surprise world events. The required visibility, authority model, approval process, and recovery or compensation rules remain **Open**.
 
 ## Unclassified candidate systems
 
-None of the following has been accepted into the PoC or final game scope:
+Except for the narrowly confirmed military-contest boundary above, none of the following systems has been accepted into the PoC or final game scope:
 
 - infrastructure and civilian infrastructure;
 - resource production;
@@ -115,7 +136,7 @@ None of the following has been accepted into the PoC or final game scope:
 - intelligence and espionage;
 - economy;
 - technology;
-- military.
+- military beyond that boundary.
 
 The design process must place each candidate into one of three groups: **PoC core**, **deferred**, or **removed**.
 
@@ -156,17 +177,22 @@ The design process must place each candidate into one of three groups: **PoC cor
 - How are conflicting rules ordered and explained?
 - When does the server evaluate and execute plans?
 - What information can plans use without granting perfect intelligence?
+- How does every contingency trigger identify its observable information source and confidence, and how does its resolution log show that evidence?
 - How can opponents anticipate or disrupt plans while outcomes remain understandable?
 - What happens when assumptions change, prerequisites disappear, or a plan partially fails?
 - What makes a stale doctrine counterable without rewarding hourly rule edits?
 - What commitment, delay, or cost applies when doctrine changes?
+- What small, standardized vocabulary of contingency triggers and actions prevents rule authoring from becoming a scripting contest?
+- How are contingency trigger conditions, delays, priority and conflict rules, cooldowns, penalties, and execution results forecasted and logged for the player?
 - How are subordinate competence and improvisation previewed and explained after an outcome?
 - Where is the abstraction boundary between strategic doctrine and tactical micromanagement?
 
 ### Competition and information
 
 - How much of another player's current and future state is visible?
+- Which observable, intelligence-gated signals reveal possible enemy posture in the release version?
 - What uncertainty creates useful deduction rather than arbitrary surprise?
+- What limits, if any, prevent an attack from causing an unavoidable decisive defeat solely because the defender missed a short real-world window, while preserving meaningful consequences for poor standing strategy?
 - How are offline players protected without removing meaningful aggression?
 - What catch-up, recovery, or anti-snowball mechanisms preserve long-term competition?
 - When should brute force overcome a refined counter, and what price should it pay?
@@ -212,6 +238,7 @@ These are risks to investigate, not conclusions or accepted solutions.
 | Geography creates premature scope | A realistic hierarchy can multiply content, balance, data, and political-sensitivity costs. | What is the smallest abstract world that validates the loop? |
 | Too many coupled systems | Broad simulation may hide whether the core loop itself is enjoyable. | Which few levers create the highest-value strategic interactions? |
 | PoC tests the wrong thing | A technically impressive prototype may not answer whether planning is fun. | What explicit hypotheses and failure criteria govern the PoC? |
+| Unbounded moderator intervention | Hidden or discretionary world changes could invalidate forecasts and make competitive results feel unearned. | Which interventions are permitted, who can authorize them, and what notice, audit, compensation, and appeal rules protect player trust? |
 | Low-rank play becomes a waiting room | Scarce high offices mean most players may spend substantial time below the top. | What makes each authority layer a satisfying game in its own right? |
 | High office requires constant availability | Leadership naturally produces more interruptions, negotiations, and emergencies. | How can authority increase without making frequent presence the real promotion requirement? |
 | Finite offices become socially captured | Alliances, favoritism, alternate accounts, or activity may control appointment and promotion. | Which promotion and succession mechanisms preserve legitimate access to authority? |
@@ -261,6 +288,90 @@ Rationale: The project is still determining its core gameplay, PoC scope, and th
 Alternatives considered: No dedicated design role; using the Architect for all design discussions; allowing a general-purpose agent to make implicit product decisions. These alternatives provide weaker separation between product exploration, technical architecture, and final ownership.
 
 Consequences and follow-ups: The role is available now but does not open the implementation gate. Confirmed decisions must still be recorded by the human-approved documentation workflow in `DESIGN_STATUS.md`.
+
+### 2026-08-25 — Initial military-contest PoC boundary
+
+Status: Confirmed
+
+Decision: The first PoC will test a military contest through three player inputs: where to visibly commit forces, how much strength to show versus retain elsewhere, and one simple conditional tactic for the committed force. It is intended to test bluffing, force allocation, and limited contingent behavior without a full editable doctrine system.
+
+Rationale: This retains meaningful agency over strategic misdirection, allocation, and response while keeping the first test narrow enough to reveal whether the underlying planning loop is fun.
+
+Alternatives considered: A single binary order as the only player input; a complete tactics or doctrine editor in the first PoC. The former would not test the intended bluffing and allocation decisions, while the latter would add too much scope before the core loop is validated.
+
+Consequences and follow-ups: Detailed tactic authoring, faction cultural defaults, initiative-shift rules, commander competence, and propaganda or public-legitimacy systems are not required by this PoC boundary. Their relationship to the test, as well as the remaining systems, opponents, duration, and success criteria, remains open.
+
+### 2026-08-25 — Automatic contingencies take priority over manual overrides
+
+Status: Confirmed
+
+Decision: Players may submit a manual contest override, including retreat or a tactic change, at any time. A preconfigured automatic contingency must execute materially faster than a manual override. The exact timing differential will be determined through pre-release balancing.
+
+Rationale: Prepared strategy should remain competitive with more frequent activity. Faster automatic execution rewards the player who anticipated a situation and configured a suitable response, while manual intervention remains available for exceptional judgment.
+
+Alternatives considered: Equal delay for manual and automatic responses; immediate manual responses. These alternatives would reintroduce a substantial advantage for players who observe and react more often.
+
+Consequences and follow-ups: The contingency language must remain small, standardized, predictable, and explainable rather than becoming open-ended scripting. Its triggers, priority and conflict rules, cooldowns, penalties, execution delays, and player-facing logs remain open design work.
+
+### 2026-08-25 — Automatic contingencies are bound by faction knowledge
+
+Status: Confirmed
+
+Decision: An automatic contingency may react only to information that its faction can realistically know. It may not read the simulation's hidden state. Any exception requires an explicit future design decision.
+
+Rationale: The same information boundary must apply to automated and manual strategy so that intelligence remains meaningful, counterplay stays fair, and outcomes remain forecastable.
+
+Alternatives considered: Allowing contingencies to read true hidden state; using vague derived signals that silently aggregate it. These alternatives would give automation pseudo-knowledge unavailable to players and undermine trust in the information game.
+
+Consequences and follow-ups: Each trigger must identify its observable source and confidence, and its resolution log must show the evidence used. Generic threat or battle-outlook signals must not silently aggregate hidden state. The exact visibility and confidence model remains open.
+
+### 2026-08-25 — Staged information fidelity for the PoC and release game
+
+Status: Confirmed
+
+Decision: The PoC will show a faction its own force's strength, energy, and morale exactly, while showing enemy condition only as intelligence-based estimates. The release version should not necessarily provide exact own-force information.
+
+Rationale: Exact own-force data keeps the first test legible and isolates the fun of planning, bluffing, and allocation. Later own-force uncertainty can add strategic texture once its reporting model is understandable and actionable.
+
+Alternatives considered: Exact information for both sides in the PoC; release-level uncertainty from the start; arbitrary hidden own-force state in the release game. The first removes the intended intelligence game, the second obscures the PoC, and the third would create frustration rather than strategy.
+
+Consequences and follow-ups: In the release version, own-force uncertainty must be expressed as confirmed, estimated, or stale reporting with clear reasons and player-controlled ways to improve confidence. The reporting sources, delays, and improvement actions remain open.
+
+### 2026-08-25 — Staged enemy-posture visibility for the PoC and release game
+
+Status: Confirmed
+
+Decision: The PoC may show intelligence-based broad enemy force size and estimated current posture. The release version should not reliably expose enemy posture.
+
+Rationale: Explicit posture keeps the PoC's allocation, bluffing, and conditional-response loop legible. Reducing that certainty later creates room for deception and deduction once players understand the core contest.
+
+Alternatives considered: Reliably expose posture in the release game; hide posture from the PoC. The first would narrow the space for meaningful deception, while the second would make the initial test too opaque.
+
+Consequences and follow-ups: Release-version hidden posture must leave observable, intelligence-gated signals—such as movement patterns, logistics, contact reports, or delayed battle evidence—so players can form and revise hypotheses. It must not produce a decisive outcome that a faction could not plausibly anticipate. The exact signals and confidence model remain open.
+
+### 2026-08-25 — Immediate response by standing defence strategy
+
+Status: Confirmed
+
+Decision: When an attack begins, the defender's standing strategy responds immediately. The defender receives a notification but no guaranteed pause for manual input. Defence quality is the owner's responsibility; a poorly configured controlled territory or force can lose while its owner is away.
+
+Rationale: This makes preparation and delegated strategy meaningful, avoids treating real-world availability as a mandatory reaction test, and maintains a persistent world whose conflicts do not stop for absent players.
+
+Alternatives considered: Pause contests until the defender responds manually; guarantee a manual-response window before any effect. These alternatives reward availability and weaken the value of standing strategy.
+
+Consequences and follow-ups: Manual intervention remains available under the confirmed slower-override rule. It remains open whether an attack can ever cause an unavoidable decisive defeat solely because a defender missed a short real-world window; any protection must preserve consequences for genuinely poor standing strategy without making defence invulnerable.
+
+### 2026-08-25 — Self-contained contested districts in the PoC
+
+Status: Confirmed
+
+Decision: In the PoC, a contested district is self-contained. Its standing defence cannot automatically call reinforcements from other districts.
+
+Rationale: This keeps the first contest focused on visible commitment, reserve allocation, conditional response, bluffing, and information rather than introducing cross-district logistics and reinforcement coordination.
+
+Alternatives considered: Automatic reinforcement calls in the PoC. Although potentially strategic, they would add a new multi-district decision layer before the local contest loop has been validated.
+
+Consequences and follow-ups: Configurable automatic reinforcement calls are a deferred candidate for later design. Their trigger conditions, authority, costs, travel rules, and interaction with player strategy remain open.
 
 Add future entries in this form:
 

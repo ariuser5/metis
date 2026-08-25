@@ -68,6 +68,16 @@ The design target is a **strategy planner**, not idle automation. The system mus
 - behave predictably and explainably;
 - reduce the advantage of checking the game at the exact right moment.
 
+Within a contest, manual overrides may be submitted at any time, but preconfigured automatic contingencies must execute materially faster. This rewards preparation over frequent reaction; the exact timing difference remains a pre-release balance question. To avoid a scripting contest, the eventual contingency language must be bounded, standardized, predictable, and explainable.
+
+Automatic contingencies may only use information realistically available to their faction, never the simulation's hidden state. Each eventual trigger must identify its observable source and confidence, and its resolution log must show the evidence used. The exact visibility and confidence model remains open.
+
+For the PoC, a faction sees its own force's strength, energy, and morale exactly, while enemy condition is an intelligence-based estimate. The release version may later introduce own-force uncertainty only through legible, actionable reporting limits: players must see what is confirmed, estimated, or stale, why confidence is limited, and which choices can improve it.
+
+The PoC may show broad enemy force size and estimated current posture. The release version should not reliably expose enemy posture, but hidden posture must leave observable, intelligence-gated signals that allow players to form and revise hypotheses; it must not create decisive outcomes that a faction could not plausibly anticipate.
+
+When an attack begins, the defender's standing strategy responds immediately. The defender receives a notification but no guaranteed pause for manual input; preparation is the owner's responsibility. Manual intervention remains available under the slower-override rule.
+
 The planner's syntax, limits, conflict resolution, information requirements, execution timing, counterplay, and failure behavior are not yet decided.
 
 ## Predictability and randomness
@@ -100,7 +110,7 @@ The following are ideas, not approved scope:
 - military;
 - civilian infrastructure.
 
-Each system must eventually be classified as essential to the PoC, deferred until later, or removed. No classification has been agreed yet.
+Each system must eventually be classified as essential to the PoC, deferred until later, or removed. The only current classification is the narrow military-contest boundary described below; no broader system classification has been agreed.
 
 ## Proof of concept
 
@@ -110,7 +120,7 @@ Its purpose is to answer:
 
 > **Is this actually fun?**
 
-The PoC is not meant to demonstrate the breadth of the eventual MMO. Its exact loop, systems, player count, duration, success criteria, and validation method remain open.
+The PoC is not meant to demonstrate the breadth of the eventual MMO. Its first confirmed boundary is a self-contained military contest in which the player chooses where to visibly commit forces, how much strength to show versus retain, and one simple conditional tactic for that force. This is meant to test bluffing, force allocation, and limited conditional behavior without a complete tactics editor or automatic reinforcement calls from other districts. Its remaining systems, player count, duration, success criteria, and validation method remain open.
 
 ## Required design agreement before implementation
 

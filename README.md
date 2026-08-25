@@ -30,7 +30,17 @@ Players should be able to express intent in advance instead of returning at the 
 
 Plans may also react to state, for example by prioritizing housing above a population threshold or public services below a morale threshold. This must remain a strategy planner, not an idle-game autopilot: automation must preserve meaningful decisions, expose understandable behavior, and resist abuse.
 
-This mechanic and the fundamental gameplay loop must be validated in a deliberately small proof of concept. The PoC exists to answer one question: **Is this actually fun?** Its contents have not yet been selected.
+Within a contest, players may submit manual overrides, but preconfigured automatic contingencies must execute materially faster. This rewards prepared strategy over frequent reaction; the exact timing difference remains a pre-release balance question.
+
+Automatic contingencies may use only information realistically available to their faction, never the simulation's hidden state. Each eventual trigger must expose the observed evidence and its confidence.
+
+For the PoC, a faction sees its own force's strength, energy, and morale exactly, while enemy condition is estimated through intelligence. A later release version may add legible, actionable reporting limits to own-force information.
+
+The PoC may also show broad enemy force size and estimated posture. In the release version, hidden posture must still leave intelligence-gated signals players can use to form and revise predictions.
+
+When an attack begins, the defender's standing strategy responds immediately. The defender is notified, but the contest does not pause for manual input; preparedness is the owner's responsibility.
+
+This mechanic and the fundamental gameplay loop must be validated in a deliberately small proof of concept. The PoC exists to answer one question: **Is this actually fun?** Its first confirmed boundary is a self-contained military contest in which the player chooses where to visibly commit forces, how much strength to show versus retain, and one simple conditional tactic; this is intended to test bluffing, allocation, and limited conditional behavior without building a full tactics editor or automatic reinforcement calls from other districts.
 
 ## Current work
 
